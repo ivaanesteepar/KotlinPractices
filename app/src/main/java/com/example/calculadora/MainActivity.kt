@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private fun numberPressed(num: String) {
         if (esperandoSegundoNumero) {
             // Si estamos esperando el segundo número, agregamos el nuevo número al texto actual
-            binding.tvTextoA.text = "${binding.tvTextoA.text.trim()} $num" // Agrega el segundo número
+            binding.tvTextoA.text = "${binding.tvTextoA.text.trim()}  $num" // Agrega el segundo número con espacio adicional
             esperandoSegundoNumero = false // Ahora hemos ingresado el segundo número
         } else {
             if (binding.tvTextoA.text == "0" && num != ".") {
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             num1 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Usar trim para evitar espacios
 
             // Agregar el operador a la pantalla con un espacio adicional
-            binding.tvTextoA.text = "$num1 $operador " // Mostrar el primer número y el operador con espacio
+            binding.tvTextoA.text = "$num1 $operador  " // Mostrar el primer número y el operador con espacio
 
             // Preparar para el siguiente número
             esperandoSegundoNumero = true // Indicar que estamos esperando el segundo número
