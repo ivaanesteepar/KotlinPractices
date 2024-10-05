@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#d99a60" /> <!-- Color de fondo del botón -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+
+    <!-- Color de fondo del botón -->
+    <solid android:color="#d18c20"/> <!-- Puedes cambiar el color -->
+
+    <!-- Tamaño del botón -->
+    <size
+            android:width="80dp"
+            android:height="80dp"/>
+
+    <!-- Borde alrededor del botón -->
     <stroke
             android:width="2dp"
-            android:color="#d99a60" /> <!-- Color y grosor del borde -->
-    <corners android:radius="50dp" /> <!-- Radio para bordes circulares -->
+            android:color="#000000"/> <!-- Borde negro de 2dp -->
 </shape>

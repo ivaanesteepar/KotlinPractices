@@ -1,10 +1,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Capa de fondo -->
     <item>
-        <shape android:shape="oval">
-            <solid android:color="#FF0000"/> <!-- Color rojo -->
-            <size
-                android:width="80dp"
-                android:height="80dp"/> <!-- Dimensiones iguales para formar un círculo -->
+        <shape android:shape="oval"> <!-- Forma ovalada para un círculo -->
+            <solid android:color="#de4e4e" /> <!-- Color rojo claro -->
+            <stroke
+                    android:width="2dp"
+                    android:color="#000000" /> <!-- Color del borde rojo claro -->
+            <corners android:radius="50dp" /> <!-- Bordes redondeados -->
         </shape>
     </item>
 </layer-list>
