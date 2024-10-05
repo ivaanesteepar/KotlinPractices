@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval"> <!-- Cambiado a oval para crear un círculo -->
+            <solid android:color="#f1c76d"/> <!-- Color de fondo naranja claro -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval"> <!-- Cambiado a oval para crear un círculo -->
+            <solid android:color="@android:color/transparent"/> <!-- Fondo transparente para el borde -->
+            <stroke android:width="2dp" android:color="#000000"/> <!-- Color del borde -->
+        </shape>
+    </item>
+</layer-list>
