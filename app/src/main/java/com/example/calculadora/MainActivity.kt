@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         // Modificación para el botón de borrado de un solo dígito
         binding.buttonDelete.setOnClickListener { deleteLastDigit() }
+
     }
 
     // Función que se ejecuta cuando se pulsa cualquier número
@@ -71,20 +72,31 @@ class MainActivity : AppCompatActivity() {
 
     // Función que se ejecuta cuando se pulsa cualquier operador
     private fun operationPressed(operacion: Int, operador: String) {
-        if (this.operacion == SIN_OPERACION) {
-            this.operacion = operacion
-            num1 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Usar trim para evitar espacios
-
-            // Agregar el operador a la pantalla con un espacio adicional
-            binding.tvTextoA.text = "$num1 $operador  " // Mostrar el primer número y el operador con espacio
-
-            // Preparar para el siguiente número
-            esperandoSegundoNumero = true // Indicar que estamos esperando el segundo número
+        if (this.operacion != SIN_OPERACION) {
+            // Si ya hay una operación en curso, resolvemos antes de continuar
+            resolvePressed()
+        } else {
+            // Solo asigna num1 si no hay operación en curso (es decir, es la primera operación)
+            num1 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Obtener el número completo mostrado en la pantalla
         }
+
+        this.operacion = operacion
+
+        // Agregar el operador a la pantalla con un espacio adicional
+        binding.tvTextoA.text = "$num1 $operador  " // Mostrar el primer número y el operador con espacio
+
+        // Preparar para el siguiente número
+        esperandoSegundoNumero = true // Indicar que estamos esperando el segundo número
     }
+
 
     // Función para resolver la operación
     private fun resolvePressed() {
+        // Solo calcular si hay un segundo número
+        if (esperandoSegundoNumero) {
+            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' ')) // Obtener el segundo número
+        }
+
         val result = when (operacion) {
             SUMA -> num1.add(num2)
             RESTA -> num1.subtract(num2)
@@ -105,9 +117,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Resetear variables
-        num1 = result // si queremos hacer otra operación con el resultado, se lo asignamos a num1
         num2 = BigDecimal.ZERO // num2 se vuelve a 0
         esperandoSegundoNumero = false // Reseteamos para la próxima operación
+        operacion = SIN_OPERACION // Reseteamos la operación para permitir una nueva entrada
     }
 
     // Función para borrar todo
