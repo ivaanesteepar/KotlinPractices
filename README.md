@@ -1,1 +1,2 @@
-![Logo del proyecto]([https://github.com/ivaanesteepar/Calculadora/images/Calculadora.png](https://github.com/ivaanesteepar/Calculadora/blob/master/images/Calculadora.png))
+
+![Calculadora](https://github.com/user-attachments/assets/fcc031c2-eb5f-4e44-a32f-dd38db54bf51)
