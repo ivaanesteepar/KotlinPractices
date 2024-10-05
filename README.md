@@ -11,5 +11,3 @@ Esta calculadora simple permite realizar operaciones matemáticas básicas como 
 - **Reiniciar la calculadora**: Con el botón **AC**, puedes borrar todos los dígitos y comenzar una nueva operación.
 - **Operaciones básicas**: Suma, resta, multiplicación y división.
 - **Compatibilidad**: Es ideal para cálculos rápidos en dispositivos móviles y de escritorio.
-
-Esta calculadora es perfecta para realizar cálculos sencillos de manera eficiente y rápida, manteniendo una interfaz limpia y fácil de usar.
