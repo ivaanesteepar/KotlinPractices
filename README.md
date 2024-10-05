@@ -1,5 +1,5 @@
 ## INTERFAZ DE LA CALCULADORA
-<img src="https://github.com/user-attachments/assets/2891e5e1-69ce-45c5-8b00-4302372eb2ea" alt="Calculadora" width="150"/>
+<img src="https://github.com/user-attachments/assets/2d4855ec-da4c-425a-8bb6-808f303af266" alt="Calculadora" width="150"/>
 
 
 ### Descripción:
