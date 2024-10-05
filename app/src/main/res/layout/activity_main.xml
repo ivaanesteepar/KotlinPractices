@@ -69,8 +69,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
-                android:background="@drawable/border_button"
                 android:gravity="center"
+                android:background="@drawable/border_button"
                 android:text="@string/button1"
                 android:textSize="20sp" />
 

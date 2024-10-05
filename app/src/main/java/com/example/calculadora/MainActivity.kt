@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater) // Inicializar el binding
         setContentView(binding.root) // Usar la raíz del binding
 
-        binding.tvTextoA.text = "0"
+        binding.tvTextoA.text = "0" // Asignamos el 0 como valor default a la pantallita de la calculadora
         operacion = SIN_OPERACION
 
         // Configuración de los botones
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonDelete.setOnClickListener { deleteLastDigit() }
     }
 
+    // Función que se ejecuta cuando se pulsa cualquier numero
     private fun numberPressed(num: String) {
         if (binding.tvTextoA.text == "0" && num != ".") {
             binding.tvTextoA.text = num
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Función que se ejecuta cuando se pulsa cualquier operador
     private fun operationPressed(operacion: Int) {
         this.operacion = operacion
         num1 = BigDecimal(binding.tvTextoA.text.toString())
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resolvePressed() {
-        val result = when (operacion) {
+        val result = when (operacion) { //se asignará a la variable result el resultado de la operación
             SUMA -> num1.add(num2)
             RESTA -> num1.subtract(num2)
             MULTIPLICACION -> num1.multiply(num2)
@@ -78,14 +80,15 @@ class MainActivity : AppCompatActivity() {
             else -> BigDecimal.ZERO
         }
 
+        //actualizamos la pantallita de la calculadora
         binding.tvTextoA.text = if (result.stripTrailingZeros().scale() <= 0) {
             result.toBigInteger().toString()
         } else {
             result.setScale(2, RoundingMode.HALF_UP).toString()
         }
 
-        num1 = result
-        num2 = BigDecimal.ZERO
+        num1 = result //si queremos hacer otra operación con el resultado, se lo asignamos a num1
+        num2 = BigDecimal.ZERO //num2 se vuelve a 0
     }
 
     // Función para borrar todo
