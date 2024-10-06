@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                     try {
                         BigDecimal(Math.pow(num1.toDouble(), num2.toDouble()))
                     } catch (e: Exception) {
-                        Log.e("Calculadoraaa", "Error en la operación de exponente: ${e.message}")
+                        Log.e("Calculadora", "Error en la operación de exponente: ${e.message}")
                         BigDecimal.ZERO
                     }
                 }
