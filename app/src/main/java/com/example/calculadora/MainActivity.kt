@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
             operacion = SIN_OPERACION
 
         } catch (e: Exception) {
-            Log.e("Calculadoraaa", "Error en la resolución de la operación: ${e.message}")
+            Log.e("Calculadora", "Error en la resolución de la operación: ${e.message}")
             // Opcionalmente, puedes mostrar un mensaje al usuario
         }
     }
