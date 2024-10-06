@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/main"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#9acbcb"
-              android:orientation="vertical"
-              android:padding="16dp"
-              tools:context=".MainActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#9acbcb"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
+    <!-- Pantalla para mostrar el resultado -->
     <TextView
             android:id="@+id/tvTextoA"
             android:layout_width="match_parent"
@@ -29,40 +30,134 @@
             android:orientation="vertical"
             android:paddingTop="25dp">
 
-        <!-- Nueva fila para los botones de borrado -->
+        <!-- Primera fila para botones de borrado -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="end">
 
-            <!-- Botones de borrado -->
             <Button
                     android:id="@+id/button_delete"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/botonborradouno"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/botonborrado"
                     android:gravity="center"
                     android:text="B"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             <Button
                     android:id="@+id/button_clear"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/botonborradogeneral"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/botonborrado"
                     android:gravity="center"
-                    android:textSize="20sp"
-                    android:text="AC"/>
+                    android:text="AC"
+                    android:textSize="20sp" />
+
         </LinearLayout>
 
-        <!-- Resto de los botones -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/button17"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button17"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button18"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button18"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button19"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button19"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button20"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button20"
+                    android:textSize="20sp"/>
+        </LinearLayout>
+
+        <!-- Segunda fila científica -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/button21"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button21"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button22"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button22"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button23"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button23"
+                    android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/button24"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/border_opcomplejas"
+                    android:gravity="center"
+                    android:text="@string/button24"
+                    android:textSize="20sp"/>
+        </LinearLayout>
+
+        <!-- Cuarta fila con botones numéricos y operadores -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
 
             <Button
                     android:id="@+id/button1"
@@ -105,7 +200,7 @@
                     android:textSize="20sp"/>
         </LinearLayout>
 
-        <!-- Segunda fila de botones -->
+        <!-- Quinta fila de botones -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,7 +247,7 @@
                     android:textSize="20sp"/>
         </LinearLayout>
 
-        <!-- Tercera fila de botones -->
+        <!-- Sexta fila de botones -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -199,7 +294,7 @@
                     android:textSize="20sp"/>
         </LinearLayout>
 
-        <!-- Cuarta fila de botones -->
+        <!-- Séptima fila de botones -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -230,7 +325,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/button15_background"
+                    android:background="@drawable/border_equals"
                     android:gravity="center"
                     android:text="@string/button15"
                     android:textSize="20sp"/>

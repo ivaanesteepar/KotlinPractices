@@ -1,24 +1,31 @@
 package com.example.calculadora
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.calculadora.databinding.ActivityMainBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
+import kotlin.math.cos
+import kotlin.math.ln
+import kotlin.math.log10
+import kotlin.math.sin
+import kotlin.math.sqrt
+import kotlin.math.tan
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding // Declarar la variable de binding
+    private lateinit var binding: ActivityMainBinding
     private var num1 = BigDecimal.ZERO
     private var num2 = BigDecimal.ZERO
     private var operacion = SIN_OPERACION
-    private var esperandoSegundoNumero = false // Para saber si estamos ingresando el segundo número
+    private var esperandoSegundoNumero = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater) // Inicializar el binding
-        setContentView(binding.root) // Usar la raíz del binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding.tvTextoA.text = "0" // Asignamos el 0 como valor default a la pantallita de la calculadora
+        binding.tvTextoA.text = "0"
         operacion = SIN_OPERACION
 
         // Configuración de los botones
@@ -38,22 +45,35 @@ class MainActivity : AppCompatActivity() {
         binding.button14.setOnClickListener { numberPressed(".") }
         binding.button15.setOnClickListener { resolvePressed() }
         binding.button16.setOnClickListener { operationPressed(SUMA, " + ") }
+        binding.button17.setOnClickListener { operationPressed(LOG, " log ") }
+        binding.button18.setOnClickListener { operationPressed(LN, " ln ") }
+        binding.button19.setOnClickListener { operationPressed(SIN, " sin ") }
+        binding.button20.setOnClickListener { operationPressed(COS, " cos ") }
+        binding.button21.setOnClickListener { operationPressed(TAN, " tan ") }
+        binding.button22.setOnClickListener { operationPressed(RAIZ, " √ ") }
+        binding.button23.setOnClickListener { operationPressed(CUADRADO, " ^2 ") }
+        binding.button24.setOnClickListener { operationPressed(EXP, " ^ ") }
 
-        // Modificación para el botón de borrado total
+        // Botón para borrar todo
         binding.buttonClear.setOnClickListener { clearAll() }
 
-        // Modificación para el botón de borrado de un solo dígito
+        // Botón para borrar un dígito
         binding.buttonDelete.setOnClickListener { deleteLastDigit() }
-
     }
 
-    // Función que se ejecuta cuando se pulsa cualquier número
     private fun numberPressed(num: String) {
+        // Si estamos esperando el segundo número
         if (esperandoSegundoNumero) {
-            // Si estamos esperando el segundo número, agregamos el nuevo número al texto actual
-            binding.tvTextoA.text = "${binding.tvTextoA.text.trim()}  $num" // Agrega el segundo número con espacio adicional
-            esperandoSegundoNumero = false // Ahora hemos ingresado el segundo número
+            // Si se está introduciendo el segundo número (num2)
+            if (binding.tvTextoA.text.trim().endsWith(" ")) {
+                // Si la entrada actual es solo un espacio, reemplazamos con el número
+                binding.tvTextoA.text = "${binding.tvTextoA.text.trim()}$num"
+            } else {
+                // Agregamos el número al final
+                binding.tvTextoA.text = "${binding.tvTextoA.text.trim()} $num"
+            }
         } else {
+            // Actualizamos el primer número (num1)
             if (binding.tvTextoA.text == "0" && num != ".") {
                 binding.tvTextoA.text = num
             } else {
@@ -61,41 +81,45 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Actualizar num1 o num2 según el estado de la operación
+        // Actualizamos num1 o num2 según la operación seleccionada
         if (operacion == SIN_OPERACION) {
-            num1 = BigDecimal(binding.tvTextoA.text.toString().trim().substringBefore(' ')) // Solo el primer número
+            num1 = BigDecimal(binding.tvTextoA.text.toString().trim().substringBefore(' '))
         } else {
-            // Actualizamos num2 si hay un operador presente
-            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' ')) // Solo el segundo número
+            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
         }
     }
 
-    // Función que se ejecuta cuando se pulsa cualquier operador
+
+
+
     private fun operationPressed(operacion: Int, operador: String) {
+        // Si hay una operación previa, resolverla primero
         if (this.operacion != SIN_OPERACION) {
-            // Si ya hay una operación en curso, resolvemos antes de continuar
             resolvePressed()
         } else {
-            // Solo asigna num1 si no hay operación en curso (es decir, es la primera operación)
-            num1 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Obtener el número completo mostrado en la pantalla
+            num1 = BigDecimal(binding.tvTextoA.text.toString().trim())
         }
 
+        // Actualiza el operador actual
         this.operacion = operacion
 
-        // Agregar el operador a la pantalla con un espacio adicional
-        binding.tvTextoA.text = "$num1 $operador  " // Mostrar el primer número y el operador con espacio
-
-        // Preparar para el siguiente número
-        esperandoSegundoNumero = true // Indicar que estamos esperando el segundo número
+        // En caso de operaciones científicas, ejecutamos inmediatamente
+        if (operacion in listOf(LOG, LN, SIN, COS, TAN, RAIZ, CUADRADO)) {
+            resolvePressed()  // Resolver inmediatamente
+        } else {
+            // Mostrar num1 y el nuevo operador
+            binding.tvTextoA.text = "$num1 $operador "
+            esperandoSegundoNumero = true
+        }
     }
 
-
-    // Función para resolver la operación
     private fun resolvePressed() {
-        // Solo calcular si hay un segundo número
         if (esperandoSegundoNumero) {
-            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' ')) // Obtener el segundo número
+            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
         }
+
+        // Imprimir el valor de num2 antes de realizar la operación
+        Log.d("Calculadoraaa", "Valor de num2 antes de la operación: $num2")
 
         val result = when (operacion) {
             SUMA -> num1.add(num2)
@@ -106,45 +130,61 @@ class MainActivity : AppCompatActivity() {
             } else {
                 BigDecimal.ZERO
             }
+            LOG -> BigDecimal(log10(num1.toDouble()))
+            LN -> BigDecimal(ln(num1.toDouble()))
+            SIN -> BigDecimal(sin(Math.toRadians(num1.toDouble())))
+            COS -> BigDecimal(cos(Math.toRadians(num1.toDouble())))
+            TAN -> BigDecimal(tan(Math.toRadians(num1.toDouble())))
+            RAIZ -> BigDecimal(sqrt(num1.toDouble()))
+            CUADRADO -> num1.multiply(num1)
+            EXP -> {
+                try {
+                    BigDecimal(Math.pow(num1.toDouble(), num2.toDouble()))
+                } catch (e: Exception) {
+                    Log.e("Calculadoraaa", "Error en la operación de exponente: ${e.message}")
+                    BigDecimal.ZERO
+                }
+            }
             else -> BigDecimal.ZERO
         }
 
-        // Mostrar el resultado en la pantalla
+        // Actualiza num1 con el resultado para operaciones encadenadas
+        num1 = result
+
+        // Muestra el resultado en la pantalla
         binding.tvTextoA.text = if (result.stripTrailingZeros().scale() <= 0) {
             result.toBigInteger().toString()
         } else {
-            result.setScale(2, RoundingMode.HALF_UP).toString()
+            result.setScale(8, RoundingMode.HALF_UP).toString() // Cambiar a 8 decimales
         }
 
-        // Resetear variables
-        num2 = BigDecimal.ZERO // num2 se vuelve a 0
-        esperandoSegundoNumero = false // Reseteamos para la próxima operación
-        operacion = SIN_OPERACION // Reseteamos la operación para permitir una nueva entrada
+        num2 = BigDecimal.ZERO
+        esperandoSegundoNumero = false
+        operacion = SIN_OPERACION
     }
 
-    // Función para borrar todo
+
+
     private fun clearAll() {
-        binding.tvTextoA.text = "0" // Restablecer a 0
-        num1 = BigDecimal.ZERO // Resetear num1
-        num2 = BigDecimal.ZERO // Resetear num2
-        operacion = SIN_OPERACION // Restablecer operación
-        esperandoSegundoNumero = false // Resetear la espera del segundo número
+        binding.tvTextoA.text = "0"
+        num1 = BigDecimal.ZERO
+        num2 = BigDecimal.ZERO
+        operacion = SIN_OPERACION
+        esperandoSegundoNumero = false
     }
 
-    // Función para borrar el último dígito
     private fun deleteLastDigit() {
         val currentText = binding.tvTextoA.text.toString()
         if (currentText.length > 1) {
             binding.tvTextoA.text = currentText.substring(0, currentText.length - 1)
         } else {
-            binding.tvTextoA.text = "0" // Si queda vacío, poner "0"
+            binding.tvTextoA.text = "0"
         }
 
-        // Actualizar los números
         if (operacion == SIN_OPERACION) {
-            num1 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Usar trim para evitar espacios
+            num1 = BigDecimal(binding.tvTextoA.text.toString().trim())
         } else {
-            num2 = BigDecimal(binding.tvTextoA.text.toString().trim()) // Usar trim para evitar espacios
+            num2 = BigDecimal(binding.tvTextoA.text.toString().trim())
         }
     }
 
@@ -153,6 +193,14 @@ class MainActivity : AppCompatActivity() {
         const val RESTA = 2
         const val MULTIPLICACION = 3
         const val DIVISION = 4
+        const val LOG = 5
+        const val LN = 6
+        const val SIN = 7
+        const val COS = 8
+        const val TAN = 9
+        const val RAIZ = 10
+        const val CUADRADO = 11
+        const val EXP = 12
         const val SIN_OPERACION = 0
     }
 }

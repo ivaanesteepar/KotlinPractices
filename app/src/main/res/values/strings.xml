@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calculadora</string>
+    <string name="app_name">Calculadora Científica</string>
     <string name="resultados">|</string>
     <string name="borrado"></string>
     <string name="button1">7</string>
@@ -18,4 +18,14 @@
     <string name="button14">.</string>
     <string name="button15">=</string>
     <string name="button16">+</string>
+    <string name="button_clear">AC</string>
+    <string name="button_delete">B</string>
+    <string name="button17">log</string>
+    <string name="button18">ln</string>
+    <string name="button19">sin</string>
+    <string name="button20">cos</string>
+    <string name="button21">tan</string>
+    <string name="button22">√</string>
+    <string name="button23">x^2</string>
+    <string name="button24">x^y</string>
 </resources>
