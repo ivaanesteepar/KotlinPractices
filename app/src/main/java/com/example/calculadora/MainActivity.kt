@@ -83,8 +83,7 @@ class MainActivity : AppCompatActivity() {
                 num2 = BigDecimal(binding.tvTextoA.text.toString().trim())
             }
         } catch (e: NumberFormatException) {
-            Log.e("Calculadoraaa", "Error en la conversión del número: ${e.message}")
-            // Opcionalmente, puedes mostrar un mensaje al usuario
+            Log.e("Calculadora", "Error en la conversión del número: ${e.message}")
         }
     }
 
