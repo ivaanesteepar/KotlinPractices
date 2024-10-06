@@ -7,5 +7,5 @@ Esta calculadora ha sido convertida en una aplicación científica, permitiendo 
 
 - **Borrar el último dígito**: A través del botón **B**, puedes eliminar el último número ingresado.
 - **Reiniciar la calculadora**: Con el botón **AC**, puedes borrar todos los dígitos y comenzar una nueva operación.
-- **Operaciones científicas: Botones para realizar funciones como tangente (tan), coseno (cos), seno (sen), exponente, cuadrado, raíz cuadrada, logaritmo (log) y logaritmo natural (ln).
-- **Compatibilidad: Es ideal para cálculos rápidos en dispositivos móviles y de escritorio.
+- **Operaciones científicas**: Botones para realizar funciones como tangente (tan), coseno (cos), seno (sen), exponente, cuadrado, raíz cuadrada, logaritmo (log) y logaritmo natural (ln).
+- **Compatibilidad**: Es ideal para cálculos rápidos en dispositivos móviles y de escritorio.
