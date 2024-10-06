@@ -64,14 +64,8 @@ class MainActivity : AppCompatActivity() {
     private fun numberPressed(num: String) {
         // Si estamos esperando el segundo número
         if (esperandoSegundoNumero) {
-            // Si se está introduciendo el segundo número (num2)
-            if (binding.tvTextoA.text.trim().endsWith(" ")) {
-                // Si la entrada actual es solo un espacio, reemplazamos con el número
-                binding.tvTextoA.text = "${binding.tvTextoA.text.trim()}$num"
-            } else {
-                // Agregamos el número al final
-                binding.tvTextoA.text = "${binding.tvTextoA.text.trim()} $num"
-            }
+            // Actualizamos el segundo número (num2)
+            binding.tvTextoA.text = "${binding.tvTextoA.text}$num"
         } else {
             // Actualizamos el primer número (num1)
             if (binding.tvTextoA.text == "0" && num != ".") {
@@ -82,15 +76,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Actualizamos num1 o num2 según la operación seleccionada
-        if (operacion == SIN_OPERACION) {
-            num1 = BigDecimal(binding.tvTextoA.text.toString().trim().substringBefore(' '))
-        } else {
-            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
+        try {
+            if (operacion == SIN_OPERACION) {
+                num1 = BigDecimal(binding.tvTextoA.text.toString().trim())
+            } else {
+                num2 = BigDecimal(binding.tvTextoA.text.toString().trim())
+            }
+        } catch (e: NumberFormatException) {
+            Log.e("Calculadoraaa", "Error en la conversión del número: ${e.message}")
+            // Opcionalmente, puedes mostrar un mensaje al usuario
         }
     }
-
-
-
 
     private fun operationPressed(operacion: Int, operador: String) {
         // Si hay una operación previa, resolverla primero
@@ -114,56 +110,60 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resolvePressed() {
-        if (esperandoSegundoNumero) {
-            num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
-        }
-
-        // Imprimir el valor de num2 antes de realizar la operación
-        Log.d("Calculadoraaa", "Valor de num2 antes de la operación: $num2")
-
-        val result = when (operacion) {
-            SUMA -> num1.add(num2)
-            RESTA -> num1.subtract(num2)
-            MULTIPLICACION -> num1.multiply(num2)
-            DIVISION -> if (num2 != BigDecimal.ZERO) {
-                num1.divide(num2, 10, RoundingMode.HALF_UP)
-            } else {
-                BigDecimal.ZERO
+        try {
+            if (esperandoSegundoNumero) {
+                num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
             }
-            LOG -> BigDecimal(log10(num1.toDouble()))
-            LN -> BigDecimal(ln(num1.toDouble()))
-            SIN -> BigDecimal(sin(Math.toRadians(num1.toDouble())))
-            COS -> BigDecimal(cos(Math.toRadians(num1.toDouble())))
-            TAN -> BigDecimal(tan(Math.toRadians(num1.toDouble())))
-            RAIZ -> BigDecimal(sqrt(num1.toDouble()))
-            CUADRADO -> num1.multiply(num1)
-            EXP -> {
-                try {
-                    BigDecimal(Math.pow(num1.toDouble(), num2.toDouble()))
-                } catch (e: Exception) {
-                    Log.e("Calculadoraaa", "Error en la operación de exponente: ${e.message}")
+
+            // Imprimir el valor de num2 antes de realizar la operación
+            Log.d("Calculadoraaa", "Valor de num2 antes de la operación: $num2")
+
+            val result = when (operacion) {
+                SUMA -> num1.add(num2)
+                RESTA -> num1.subtract(num2)
+                MULTIPLICACION -> num1.multiply(num2)
+                DIVISION -> if (num2 != BigDecimal.ZERO) {
+                    num1.divide(num2, 10, RoundingMode.HALF_UP)
+                } else {
                     BigDecimal.ZERO
                 }
+                LOG -> BigDecimal(log10(num1.toDouble()))
+                LN -> BigDecimal(ln(num1.toDouble()))
+                SIN -> BigDecimal(sin(Math.toRadians(num1.toDouble())))
+                COS -> BigDecimal(cos(Math.toRadians(num1.toDouble())))
+                TAN -> BigDecimal(tan(Math.toRadians(num1.toDouble())))
+                RAIZ -> BigDecimal(sqrt(num1.toDouble()))
+                CUADRADO -> num1.multiply(num1)
+                EXP -> {
+                    try {
+                        BigDecimal(Math.pow(num1.toDouble(), num2.toDouble()))
+                    } catch (e: Exception) {
+                        Log.e("Calculadoraaa", "Error en la operación de exponente: ${e.message}")
+                        BigDecimal.ZERO
+                    }
+                }
+                else -> BigDecimal.ZERO
             }
-            else -> BigDecimal.ZERO
+
+            // Actualiza num1 con el resultado para operaciones encadenadas
+            num1 = result
+
+            // Muestra el resultado en la pantalla
+            binding.tvTextoA.text = if (result.stripTrailingZeros().scale() <= 0) {
+                result.toBigInteger().toString()
+            } else {
+                result.setScale(8, RoundingMode.HALF_UP).toString() // Cambiar a 8 decimales
+            }
+
+            num2 = BigDecimal.ZERO
+            esperandoSegundoNumero = false
+            operacion = SIN_OPERACION
+
+        } catch (e: Exception) {
+            Log.e("Calculadoraaa", "Error en la resolución de la operación: ${e.message}")
+            // Opcionalmente, puedes mostrar un mensaje al usuario
         }
-
-        // Actualiza num1 con el resultado para operaciones encadenadas
-        num1 = result
-
-        // Muestra el resultado en la pantalla
-        binding.tvTextoA.text = if (result.stripTrailingZeros().scale() <= 0) {
-            result.toBigInteger().toString()
-        } else {
-            result.setScale(8, RoundingMode.HALF_UP).toString() // Cambiar a 8 decimales
-        }
-
-        num2 = BigDecimal.ZERO
-        esperandoSegundoNumero = false
-        operacion = SIN_OPERACION
     }
-
-
 
     private fun clearAll() {
         binding.tvTextoA.text = "0"
