@@ -1,6 +1,5 @@
 ## INTERFAZ DE LA CALCULADORA
-<img src="https://github.com/user-attachments/assets/2d4855ec-da4c-425a-8bb6-808f303af266" alt="Calculadora" width="150"/>
-
+<img src="https://github.com/user-attachments/assets/43388e41-4d4c-450c-a601-ddba93e3f9d8" alt="Calculadora" width="150"/>
 
 ## Descripción 
 Esta calculadora ha sido convertida en una aplicación científica, permitiendo realizar operaciones matemáticas básicas como suma, resta, multiplicación y división, así como operaciones avanzadas. Está diseñada para ofrecer una interfaz intuitiva donde los usuarios pueden ingresar números y realizar cálculos rápidamente. Además, cuenta con las siguientes funcionalidades:
