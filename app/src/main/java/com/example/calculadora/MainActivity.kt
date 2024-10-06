@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         if (operacion in listOf(LOG, LN, SIN, COS, TAN, RAIZ, CUADRADO)) {
             resolvePressed()  // Resolver inmediatamente
         } else {
-            // Mostrar num1 y el nuevo operador
+            // Mostrar num1 y el nuevo operador (para el exponente)
             binding.tvTextoA.text = "$num1 $operador "
             esperandoSegundoNumero = true
         }
@@ -113,9 +113,6 @@ class MainActivity : AppCompatActivity() {
             if (esperandoSegundoNumero) {
                 num2 = BigDecimal(binding.tvTextoA.text.toString().trim().substringAfterLast(' '))
             }
-
-            // Imprimir el valor de num2 antes de realizar la operación
-            Log.d("Calculadoraaa", "Valor de num2 antes de la operación: $num2")
 
             val result = when (operacion) {
                 SUMA -> num1.add(num2)
