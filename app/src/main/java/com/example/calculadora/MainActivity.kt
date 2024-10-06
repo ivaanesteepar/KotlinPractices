@@ -151,13 +151,13 @@ class MainActivity : AppCompatActivity() {
                 result.setScale(8, RoundingMode.HALF_UP).toString() // Cambiar a 8 decimales
             }
 
+            // Una vez impreso el resultado, resetear las variables excepto el num1 por si queremos encadenar operaciones
             num2 = BigDecimal.ZERO
             esperandoSegundoNumero = false
             operacion = SIN_OPERACION
 
         } catch (e: Exception) {
             Log.e("Calculadora", "Error en la resolución de la operación: ${e.message}")
-            // Opcionalmente, puedes mostrar un mensaje al usuario
         }
     }
 
