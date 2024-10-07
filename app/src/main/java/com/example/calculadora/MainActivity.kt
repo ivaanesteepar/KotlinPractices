@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private var num2 = BigDecimal.ZERO
     private var operacion = SIN_OPERACION
     private var esperandoSegundoNumero = false
+    private var mostrarResultado = false // Nueva variable para limpiar la pantalla
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +63,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun numberPressed(num: String) {
+        // Limpiar la pantalla si se está mostrando el resultado
+        if (mostrarResultado) {
+            binding.tvTextoA.text = "0"
+            mostrarResultado = false
+        }
+
         // Si estamos esperando el segundo número
         if (esperandoSegundoNumero) {
             // Actualizamos el segundo número (num2)
@@ -106,6 +113,9 @@ class MainActivity : AppCompatActivity() {
             binding.tvTextoA.text = "$num1 $operador "
             esperandoSegundoNumero = true
         }
+
+        // Evitar que el siguiente número limpie la pantalla
+        mostrarResultado = false
     }
 
     private fun resolvePressed() {
@@ -155,6 +165,7 @@ class MainActivity : AppCompatActivity() {
             num2 = BigDecimal.ZERO
             esperandoSegundoNumero = false
             operacion = SIN_OPERACION
+            mostrarResultado = true  // Indicar que se ha mostrado el resultado
 
         } catch (e: Exception) {
             Log.e("Calculadora", "Error en la resolución de la operación: ${e.message}")
@@ -167,6 +178,7 @@ class MainActivity : AppCompatActivity() {
         num2 = BigDecimal.ZERO
         operacion = SIN_OPERACION
         esperandoSegundoNumero = false
+        mostrarResultado = false  // Resetear la bandera al limpiar todo
     }
 
     private fun deleteLastDigit() {
