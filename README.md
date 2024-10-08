@@ -3,7 +3,7 @@
 
 
 ## DESCRIPCIÓN
-¡Disfruta de una emocionante partida de 3 en raya en tu dispositivo! Esta aplicación te permite jugar contra un amigo o desafiarte a ti mismo en modo solitario. La interfaz es sencilla e intuitiva, diseñada para que todos los jugadores, desde principiantes hasta expertos, puedan disfrutar del juego.
+¡Disfruta de una emocionante partida de 3 en raya en tu dispositivo Android! Esta aplicación es compatible tanto con tablets como con móviles, permitiéndote jugar en cualquier momento y lugar. La interfaz es sencilla e intuitiva, diseñada para que todos los jugadores, desde principiantes hasta expertos, puedan disfrutar del juego.
 
 Características:
 
