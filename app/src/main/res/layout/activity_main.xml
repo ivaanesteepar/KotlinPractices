@@ -124,35 +124,39 @@
         android:background="@drawable/borde_reiniciar"/>
 
     <!-- Contador de victorias Jugador 1 -->
+
+    <!-- Contador de victorias Jugador 2 -->
+
     <TextView
         android:id="@+id/playerXCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/borde_reiniciar"
+        android:gravity="center"
+        android:padding="8dp"
         android:text="Victorias Jugador 1 (X): 0"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@drawable/borde_reiniciar"
-        app:layout_constraintTop_toBottomOf="@id/resetButton"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resetButton" />
 
-    <!-- Contador de victorias Jugador 2 -->
     <TextView
         android:id="@+id/playerOCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/borde_reiniciar"
+        android:gravity="center"
+        android:padding="8dp"
         android:text="Victorias Jugador 2 (O): 0"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@drawable/borde_reiniciar"
-        app:layout_constraintTop_toBottomOf="@id/playerXCount"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playerXCount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
