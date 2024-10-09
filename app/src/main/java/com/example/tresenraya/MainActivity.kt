@@ -1,4 +1,4 @@
-package com.example.tresenraya // Cambia esto al nombre de tu paquete
+package com.example.tresenraya
 
 import android.os.Bundle
 import android.widget.Button
