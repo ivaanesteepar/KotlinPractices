@@ -1,0 +1,162 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/fondo1"
+    tools:context=".MainActivity">
+
+    <!-- Título en la parte superior -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Bienvenido al juego de 3 en Raya!"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tablero de 3 en raya centrado -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="30dp">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text=""
+            android:textSize="48sp"
+            android:background="@drawable/borde_botones"/>
+    </GridLayout>
+
+    <!-- Botón de reinicio centrado debajo del tablero -->
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="140dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="48dp"
+        android:text="Reiniciar"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        android:background="@drawable/borde_reiniciar"/>
+
+    <!-- Contador de victorias Jugador 1 -->
+
+    <!-- Contador de victorias Jugador 2 -->
+
+    <TextView
+        android:id="@+id/playerXCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/borde_reiniciar"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Victorias Jugador 1 (X): 0"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resetButton" />
+
+    <TextView
+        android:id="@+id/playerOCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/borde_reiniciar"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Victorias Jugador 2 (O): 0"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playerXCount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
