@@ -1,2 +1,2 @@
 # Kotlin Practices
-Pequeños proyectos realizados en Kotlin
+Little projects made in Kotlin
