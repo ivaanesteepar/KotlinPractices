@@ -1,6 +1,3 @@
-# KotlinPractices
-Pequeñas prácticas de Kotlin
-
 ## Descripción 
 Esta calculadora es una aplicación científica realizada para Android, permitiendo realizar operaciones matemáticas básicas como suma, resta, multiplicación y división, así como operaciones avanzadas. Está diseñada para ofrecer una interfaz intuitiva donde los usuarios pueden ingresar números y realizar cálculos rápidamente. Además, cuenta con las siguientes funcionalidades:
 
