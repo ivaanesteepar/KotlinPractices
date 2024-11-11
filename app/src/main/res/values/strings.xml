@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Calculadora Científica</string>
+    <string name="resultados">|</string>
+    <string name="borrado"></string>
+    <string name="button1">7</string>
+    <string name="button2">8</string>
+    <string name="button3">9</string>
+    <string name="button4">/</string>
+    <string name="button5">4</string>
+    <string name="button6">5</string>
+    <string name="button7">6</string>
+    <string name="button8">*</string>
+    <string name="button9">1</string>
+    <string name="button10">2</string>
+    <string name="button11">3</string>
+    <string name="button12">-</string>
+    <string name="button13">0</string>
+    <string name="button14">.</string>
+    <string name="button15">=</string>
+    <string name="button16">+</string>
+    <string name="button_clear">AC</string>
+    <string name="button_delete">B</string>
+    <string name="button17">log</string>
+    <string name="button18">ln</string>
+    <string name="button19">sin</string>
+    <string name="button20">cos</string>
+    <string name="button21">tan</string>
+    <string name="button22">√</string>
+    <string name="button23">x^2</string>
+    <string name="button24">x^y</string>
+</resources>
