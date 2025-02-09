@@ -1,7 +1,3 @@
-# INTERFAZ
-<img src="https://github.com/user-attachments/assets/a177a6b6-30c9-4a96-bb47-373747824509" width = "150"/>
-
-
 ## DESCRIPCIÓN
 ¡Disfruta de una emocionante partida de 3 en raya en tu dispositivo Android! Esta aplicación es compatible tanto con tablets como con móviles, permitiéndote jugar en cualquier momento y lugar. La interfaz es sencilla e intuitiva, diseñada para que todos los jugadores, desde principiantes hasta expertos, puedan disfrutar del juego.
 
